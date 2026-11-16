@@ -5,7 +5,7 @@ interface PokemonGridProps {
   pokemon: Pokemon[];
 }
 
-export default function BookList({ pokemon }: Readonly<PokemonGridProps>) {
+export default function PokemonGrid({ pokemon }: Readonly<PokemonGridProps>) {
   return (
     <ul>
       {pokemon.length > 0 ? (
