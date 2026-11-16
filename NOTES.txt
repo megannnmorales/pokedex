@@ -1,0 +1,3 @@
+API becomes undefined if you don't use VITE_API_URL
+
+Too easily accessible - your secrets will be exposed.
