@@ -8,13 +8,25 @@ import PokemonGrid from "./PokemonGrid";
 //   { id: 7, name: "squirtle" },
 // ];
 
+interface ListResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: PokemonListItem[];
+}
+
 export default function Pokedex() {
-  const [pokemonList, setPokemonList] = useState<PokemonListItem[]>([])
+  const [pokemonList, setPokemonList] = useState<PokemonListItem[]>([]);
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/pokemon?limit=20`)
-    .then((res) => res.json())
-    .then((data) => setPokemonList(data.results));
-  },[])
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Could not load Pokémon (${res.status})`);
+        }
+        return res.json();
+      })
+      .then((data: ListResponse) => setPokemonList(data.results));
+  }, []);
 
   return (
     <>
