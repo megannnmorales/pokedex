@@ -5,10 +5,9 @@ interface PokemonCardProps {
 
 export default function PokemonCard({ id, name }: Readonly<PokemonCardProps>) {
   return (
-    <li>
-      <p>
-        {name.toUpperCase()} #0{id}
-      </p>
+    <li role="listitem" aria-label="Pokemon Card">
+      <h2>{name.toUpperCase()}</h2>
+      <p> #0{id}</p>
       <img
         alt={`${name} image`}
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
