@@ -1,3 +1,7 @@
 API becomes undefined if you don't use VITE_API_URL
 
 Too easily accessible - your secrets will be exposed.
+
+Strict mode renders the page twice; this does not happen in the built version
+
+It floods the requests again, because it now fires on every re-render and because we are setting a state in useEffect we are infinitely changing a state and therefore causing a re-render
