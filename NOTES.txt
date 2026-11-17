@@ -5,3 +5,80 @@ Too easily accessible - your secrets will be exposed.
 Strict mode renders the page twice; this does not happen in the built version
 
 It floods the requests again, because it now fires on every re-render and because we are setting a state in useEffect we are infinitely changing a state and therefore causing a re-render
+
+//  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/pokemo?limit=20`)
+      .then((res) => res.json())
+      .then((data) => setPokemonList(data.results));
+  }, []);
+
+
+Write status & body for each:
+
+reading your team - 200; 
+[
+  {
+    "id": 0,
+    "pokemon_id": 0,
+    "pokemon_name": "string"
+  }
+]
+
+adding a Pokémon - 201
+request body: {
+  "pokemon_id": 1,
+  "pokemon_name": "string"
+}
+{
+  "id": 0,
+  "pokemon_id": 0,
+  "pokemon_name": "string"
+}
+
+adding the same Pokémon again -422
+{
+  "detail": [
+    {
+      "loc": [
+        "string",
+        0
+      ],
+      "msg": "string",
+      "type": "string",
+      "input": "string",
+      "ctx": {}
+    }
+  ]
+
+adding until the team is full - 422
+{
+  "detail": [
+    {
+      "loc": [
+        "string",
+        0
+      ],
+      "msg": "string",
+      "type": "string",
+      "input": "string",
+      "ctx": {}
+    }
+  ]
+
+removing a member - 204
+
+removing the same member twice - 422
+{
+  "detail": [
+    {
+      "loc": [
+        "string",
+        0
+      ],
+      "msg": "string",
+      "type": "string",
+      "input": "string",
+      "ctx": {}
+    }
+  ]
+}
