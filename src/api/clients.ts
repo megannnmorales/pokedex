@@ -6,6 +6,7 @@ export class ApiError extends Error {
     this.status = status;
   }
 }
+export const BASE_URL = "https://pokemon-team-api-xlvv.onrender.com";
 
 export const apiPost = async <T>(path: string, body: unknown): Promise<T> => {
   const response = await fetch(`${BASE_URL}${path}`, {

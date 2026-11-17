@@ -1,14 +1,14 @@
 import type { NewTeamMember, TeamMember } from "../types";
 import { apiDelete, ApiError, apiPost } from "./clients";
 
-export class TeamError extends Error {
-  code: "full" | "duplicate" | "unreadable" | "unavailable";
-  constructor(message: string, code: TeamError["code"]) {
-    super(message);
-    this.name = "TeamError";
-    this.code = status;
-  }
-}
+// export class TeamError extends Error {
+//   code: "full" | "duplicate" | "unreadable" | "unavailable";
+//   constructor(message: string, code: TeamError["code"]) {
+//     super(message);
+//     this.name = "TeamError";
+//     this.code = status;
+//   }
+// }
 
 export const BASE_URL = "https://pokemon-team-api-xlvv.onrender.com";
 // export class ApiError extends Error {
