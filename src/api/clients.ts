@@ -6,7 +6,23 @@ export class ApiError extends Error {
     this.status = status;
   }
 }
-export const BASE_URL = "https://pokemon-team-api-xlvv.onrender.com";
+// export const BASE_URL = "https://pokemon-team-api-xlvv.onrender.com";
+const BASE_URL = import.meta.env.VITE_API_URL;
+
+export const apiGet = async <T>(
+  path: string,
+  signal?: AbortSignal,
+): Promise<T> => {
+  const response = await fetch(`${BASE_URL}${path}`, { signal });
+
+  if (!response.ok) {
+    throw new ApiError(
+      `Request failed with status ${response.status}`,
+      response.status,
+    );
+  }
+  return (await response.json()) as T;
+};
 
 export const apiPost = async <T>(path: string, body: unknown): Promise<T> => {
   const response = await fetch(`${BASE_URL}${path}`, {
