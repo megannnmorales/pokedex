@@ -13,13 +13,20 @@ import { usePokemonList } from './hooks/usePokemonList'
 
 export default function Pokedex() {
 
-  const {fetchError, isLoading, pokemonList} = usePokemonList()
+
+
+  const {fetchError, isLoading, pokemonList, refetch} = usePokemonList()
 
   if(isLoading){
     return <p>Loading Pokemon...</p>
   }
   if(fetchError !== null){
-    return <p>Oh no! An error! : {fetchError}</p>
+    return (
+    <>
+    <p>Oh no! An error! : {fetchError}</p>
+    <button type="button" onClick={()=>{refetch((count: number) => count +1)}}>Try Again</button>
+    </>
+    )
   }
 
   return (
