@@ -3,16 +3,43 @@ interface SearchBoxProps {
   onChange: (value: string) => void;
 }
 
-export default function SearchBox({ value, onChange }: Readonly<SearchBoxProps>) {
+import { useNavigate } from "react-router";
+import { getPokemon } from "../api/pokemon";
+
+export default function SearchBox({
+  value,
+  onChange,
+}: Readonly<SearchBoxProps>) {
+  const navigate = useNavigate();
+
+  async function handleSubmit(value: string, event) {
+    event.preventDefault();
+    const controller = new AbortController();
+    const response = await getPokemon(value, controller.signal);
+
+    if (typeof response !== "undefined") {
+      console.log(response);
+      navigate(`/pokedex/${response.id}`);
+    }
+  }
+
   return (
-    <div className="field search-box">
-      <label htmlFor="search">Search by title or author</label>
-      <input id="search" type="text" value={value} onChange={(event) => onChange(event.target.value)} />
-      {value !== "" && (
-        <button type="button" className="btn" onClick={() => onChange("")}>
-          Clear search
-        </button>
-      )}
-    </div>
+    <form onSubmit={(event) => handleSubmit(value, event)}>
+      <div className="field search-box">
+        <label htmlFor="search">Search by pokemon</label>
+        <input
+          id="search"
+          type="text"
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+        />
+        <button>Search</button>
+        {value !== "" && (
+          <button type="button" className="btn" onClick={() => onChange("")}>
+            Clear search
+          </button>
+        )}
+      </div>
+    </form>
   );
 }
