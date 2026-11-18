@@ -7,7 +7,7 @@ import { addToTeam, getTeamone, removeFromTeam } from "../../api/team";
 
 export function useTeam() {
     const [team, setTeam] = useState<TeamMember[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoadingTeam, setIsLoadingTeam] = useState(true);
     const [teamError, setTeamError] = useState<string | null>(null);
     const [refetchCount, setRefetchCount] = useState(0);
 
@@ -22,11 +22,11 @@ export function useTeam() {
                     setTeamError(error.message)
                 }
             } finally {
-                setIsLoading(false)
+                setIsLoadingTeam(false)
             }
         }
         getTeam();
     }, [refetchCount])
     const refetchTeam = () => setRefetchCount(c => c + 1);
-    return { team, isLoading, teamError, add: addToTeam, remove: removeFromTeam, refetchTeam };
+    return { team, isLoadingTeam, teamError, add: addToTeam, remove: removeFromTeam, refetchTeam };
 }
