@@ -16,6 +16,11 @@
     outline-offset: 2px;
   }
 }
+.active {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #d9480f;
+}
 
 .hero {
   position: relative;
