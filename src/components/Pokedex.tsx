@@ -12,8 +12,6 @@ import { useTeam } from "./hooks/useTeam";
 
 export function Pokedex() {
   const { fetchError, isLoading, pokemonList, refetch } = usePokemonList();
-  const { team, isLoadingTeam, teamError, add, remove, refetchTeam } =
-    useTeam();
 
   if (isLoading) {
     return <p>Loading Pokemon...</p>;
@@ -36,7 +34,6 @@ export function Pokedex() {
   return (
     <>
       <PokemonGrid pokemon={pokemonList} />
-      <TeamPanel team={team} remove={refetchTeam} />
     </>
   );
 }

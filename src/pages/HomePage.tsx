@@ -1,9 +1,7 @@
-import { PokemonHomePage } from "../components/PokemonHomePage";
-
 export function HomePage() {
   return (
     <>
-      <PokemonHomePage />
+      <p> Welcome to this pokemon app</p>
     </>
   );
 }
