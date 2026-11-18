@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
-import type { PokemonListItem } from "../types";
 import PokemonGrid from "./PokemonGrid";
 import { usePokemonList } from "./hooks/usePokemonList";
 
-import { addToTeam, getTeamone, removeFromTeam } from "../api/team";
 import TeamPanel from "./TeamPanel";
 import { useTeam } from "./hooks/useTeam";
 
@@ -13,9 +10,10 @@ import { useTeam } from "./hooks/useTeam";
 //   { id: 7, name: "squirtle" },
 // ];
 
-export default function Pokedex() {
+export function Pokedex() {
   const { fetchError, isLoading, pokemonList, refetch } = usePokemonList();
-  const {team, isLoadingTeam, teamError, add, remove, refetchTeam} = useTeam();
+  const { team, isLoadingTeam, teamError, add, remove, refetchTeam } =
+    useTeam();
 
   if (isLoading) {
     return <p>Loading Pokemon...</p>;
@@ -38,7 +36,7 @@ export default function Pokedex() {
   return (
     <>
       <PokemonGrid pokemon={pokemonList} />
-      <TeamPanel team={team} remove={refetchTeam}/>
+      <TeamPanel team={team} remove={refetchTeam} />
     </>
   );
 }
