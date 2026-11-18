@@ -9,7 +9,7 @@ export function useTeam() {
     const [team, setTeam] = useState<TeamMember[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [teamError, setTeamError] = useState<string | null>(null);
-    const [refetchCount,setRefetchCount] = useState(0);
+    const [refetchCount, setRefetchCount] = useState(0);
 
     useEffect(() => {
         setTeamError(null);
@@ -21,14 +21,12 @@ export function useTeam() {
                 if (error instanceof Error) {
                     setTeamError(error.message)
                 }
-            } finally{
+            } finally {
                 setIsLoading(false)
             }
         }
         getTeam();
-    },[])
-
-
-
-    return { team, isLoading, teamError, add: addToTeam, remove:removeFromTeam, refetchTeam:setRefetchCount };
+    }, [refetchCount])
+    const refetchTeam = () => setRefetchCount(c => c + 1);
+    return { team, isLoading, teamError, add: addToTeam, remove: removeFromTeam, refetchTeam };
 }

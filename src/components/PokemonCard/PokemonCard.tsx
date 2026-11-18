@@ -5,6 +5,7 @@ interface PokemonCardProps {
   name: string;
 }
 
+
 export default function PokemonCard({ id, name }: Readonly<PokemonCardProps>) {
   return (
     <li role="listitem" aria-label="Pokemon Card">
