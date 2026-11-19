@@ -7,6 +7,7 @@ import { useState } from "react";
 import SearchBox from "./SearchBox";
 import { getPokemon } from "../api/pokemon";
 import usePokemon from "./hooks/usePokemon";
+import { useToast } from "./hooks/useToast";
 
 // const pokemonList = [
 //   { id: 1, name: "bulbasour" },
