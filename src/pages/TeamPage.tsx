@@ -1,9 +1,9 @@
 import TeamPanel from "../components/TeamPanel";
-import { useTeam } from "../components/hooks/useTeam";
+import { useTeamContext } from "../components/hooks/useTeamContext";
 
 export function TeamPage() {
-  const { team, isLoadingTeam, teamError, add, remove, refetchTeam } =
-    useTeam();
+
+  const {team,refetchTeam } = useTeamContext()
 
   return <TeamPanel team={team} remove={refetchTeam} />;
 }

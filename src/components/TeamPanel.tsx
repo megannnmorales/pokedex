@@ -9,6 +9,7 @@ interface TeamPanelProps{
 
 
 export default function TeamPanel({team, remove} : TeamPanelProps){
+    
 
     async function removeHandler(teamMember: TeamMember){
         await removeFromTeam(4,teamMember.id);

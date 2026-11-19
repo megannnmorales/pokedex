@@ -5,6 +5,7 @@ import App from "./App.tsx";
 import { BrowserRouter } from "react-router";
 import { ThemeProvider } from "./contexts/ThemeContext.tsx";
 import { ToastProvider } from "./contexts/ToastContext.tsx";
+import { TeamContext, TeamProvider } from "./contexts/TeamContext.tsx";
 
 const container = document.getElementById("root");
 if (!container) throw new Error("DOM element #root not found");
@@ -14,7 +15,9 @@ createRoot(container).render(
     <BrowserRouter>
       <ThemeProvider>
         <ToastProvider>
-          <App />
+          <TeamProvider>
+            <App />
+          </TeamProvider>
         </ToastProvider>
       </ThemeProvider>
     </BrowserRouter>

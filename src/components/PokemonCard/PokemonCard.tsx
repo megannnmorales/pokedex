@@ -1,7 +1,7 @@
 import { NavLink } from "react-router";
-import { addToTeam } from "../../api/team";
 import { checkIfOnTeam } from "../../lib/checkIfOnTeam";
 import { useToast } from "../hooks/useToast";
+import { useTeamContext } from "../hooks/useTeamContext";
 
 interface PokemonCardProps {
   id: number;
@@ -12,10 +12,12 @@ export default function PokemonCard({ id, name }: Readonly<PokemonCardProps>) {
   const onTeam = checkIfOnTeam(String(id));
 
   const { showToast } = useToast();
+  const {add, refetchTeam} = useTeamContext()
 
-  const onClickHandler = () => {
-    addToTeam(4, { pokemon_id: id, pokemon_name: name });
+  const onClickHandler = async () => {
+    await add(4, { pokemon_id: id, pokemon_name: name });
     showToast(`${name} has been added`);
+    refetchTeam();
   };
   return (
     <li role="listitem" aria-label="Pokemon Card">
