@@ -158,6 +158,14 @@
   }
 }
 
+[data-theme= "light"]{
+  color:#ccff00
+}
+[data-theme= "dark"]{
+  color:#ff00ea
+}
+
+
 #spacer {
   height: 88px;
   border-top: 1px solid var(--border);
