@@ -36,6 +36,17 @@ export default function NavBar() {
             My team
           </NavLink>
         </li>
+         <li>
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+            end
+          >
+            Log in
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

@@ -24,6 +24,7 @@ export default function SignUpForm() {
   }
   return (
     <form onSubmit={(event) => handleSubmit(event)}>
+      <p>Sign up</p>
       <label htmlFor="email">
         Email
         <input

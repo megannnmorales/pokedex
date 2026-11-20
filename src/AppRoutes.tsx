@@ -5,6 +5,7 @@ import { PokedexPage } from "./pages/PokedexPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import { TeamPage } from "./pages/TeamPage";
 import PokemonPage from "./pages/PokemonPage";
+import { LoginPage } from "./pages/LoginPage";
 
 export function AppRoutes() {
   return (
@@ -14,6 +15,7 @@ export function AppRoutes() {
         <Route path="/pokedex" element={<PokedexPage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/pokedex/:id" element={<PokemonPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
