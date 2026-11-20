@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { register } from "../api/auth/register";
+import { useUser } from "./hooks/userUser";
 
 export default function SignUpForm() {
   const [email, setEmail] = useState("");
@@ -7,12 +7,14 @@ export default function SignUpForm() {
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  async function handleSubmit(event) {
+  const { signUp } = useUser();
+
+  async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
     setIsSubmitting(true);
     try {
-      await register(email, password);
+      await signUp(email, password);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
       setEmail("");
