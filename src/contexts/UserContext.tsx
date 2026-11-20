@@ -43,7 +43,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
     if (userBody === null) throw new Error("Error");
 
     setUser({ status: "success", user: userBody });
-    //   await login(email, password);
   }
 
   return (
